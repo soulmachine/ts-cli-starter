@@ -1,0 +1,50 @@
+{
+  "name": "ts-cli-starter",
+  "version": "1.0.0",
+  "description": "TypeScript CLI project template.",
+  "main": "src/index.ts",
+  "bin": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/index.js",
+    "lint": "eslint . --ext '.js,.jsx,.ts,.tsx,.md'",
+    "prettier": "prettier -c --write '**/*'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soulmachine/ts-cli-starter.git"
+  },
+  "keywords": [
+    "typescript",
+    "CLI"
+  ],
+  "engines": {
+    "node": ">=8.9"
+  },
+  "author": "soulmachine",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/soulmachine/ts-cli-starter/issues"
+  },
+  "homepage": "https://github.com/soulmachine/ts-cli-starter",
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/figlet": "^1.2.0",
+    "@types/node": "^12.12.7",
+    "@types/yargs": "^13.0.3",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.3",
+    "eslint-plugin-markdown": "^1.0.1",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "figlet": "^1.2.4",
+    "yargs": "^14.2.0"
+  }
+}
