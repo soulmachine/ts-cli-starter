@@ -5,8 +5,8 @@ TypeScript CLI project template.
 ## Table of Contents
 
 1. [Create an empty project](#1-create-an-empty-project)
-1. [Add the command to `PATH`](#2-add-the-command-to-path)
-1. [Configure TypeScript in tsconfig.json](#3-configure)
+1. [Add itself to `PATH`](#2-add-itself-to-path)
+1. [Configure TypeScript in tsconfig.json](#3-configure-typescript-in-tsconfigjson)
 1. [.editorconfig](#4-editorconfig)
 1. [ESLint](#5-eslint)
 1. [Prettier](#6-prettier)
@@ -81,7 +81,7 @@ console.log('Hello World');
 
 Now compile this project with `npm run build` and run it with `npm start`, you'll see `Hello World` printed out！
 
-## 2. Install command to `PATH`
+## 2. Add itself to `PATH`
 
 We can install this CLI project as a command to `PATH` so that it can be used directly in terminal.
 
@@ -102,6 +102,10 @@ Run `npm link` and type the command `ts-cli-starter` in terminal, you'll also se
 ## 3. Configure TypeScript in tsconfig.json
 
 All compiler options are configured in `tsconfig.json`.
+
+Note:
+
+- Make sure set "module" to "commonjs". Because Node.js runtime only recognizes CommonJS format, and it doesn't support `import`.
 
 Install node types which is needed by all Node.js projects:
 
