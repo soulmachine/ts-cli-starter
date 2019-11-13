@@ -91,11 +91,14 @@ First add the following line at the beginning of `index.ts`:
 #!/usr/bin/env node
 ```
 
-Then add a `bin` field in `package.json`:
+Then add 2 properties in `package.json`:
 
 ```json
-"bin": "dist/index.js"
+"bin": "dist/index.js",
+"preferGlobal": "true",
 ```
+
+`bin` tells npm where your executable file is so that it can install it into the `PATH`. And `preferGlobal`, if set to `true`, will warn users if they try to install the package locally. `preferGlobal` is not necessary, but it can be nice to let users know that the package is a CLI tool and meant to be installed globally.
 
 Run `npm link` and type the command `ts-cli-starter` in terminal, you'll also see `Hello World` printed out！
 

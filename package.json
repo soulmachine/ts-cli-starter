@@ -4,6 +4,7 @@
   "description": "TypeScript CLI project template.",
   "main": "src/index.ts",
   "bin": "dist/index.js",
+  "preferGlobal": "true",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node ./dist/index.js",
@@ -20,7 +21,7 @@
     "CLI"
   ],
   "engines": {
-    "node": ">=8.9"
+    "node": ">=10"
   },
   "author": "soulmachine",
   "license": "Apache-2.0",
