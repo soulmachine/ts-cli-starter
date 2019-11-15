@@ -257,7 +257,6 @@ Install`chalk` :
 
 ```bash
 npm install chalk --save
-npm install @types/chalk --save-dev
 ```
 
 Add the following code to `./src/index.ts`:
