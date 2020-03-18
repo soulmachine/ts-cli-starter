@@ -266,6 +266,19 @@ test('A dummy unit test', (): void => {
 
 Now run `npm run test` and you'll see Jest is doing its job!
 
+Add a Git hook. Install `husky` using `npm install husky --save-dev` and add the following config to `package.json`:
+
+```json
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prepublish",
+      "pre-push": "npm run prepublish"
+    }
+  }
+}
+```
+
 ## 8. Must-have libraries
 
 ### 8.1 Parse command line arguments

@@ -17,6 +17,12 @@
     "test": "jest --config jest.config.json --no-cache",
     "prepublish": "npm run build && npm run lint && npm run prettier && npm run test"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prepublish",
+      "pre-push": "npm run prepublish"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soulmachine/ts-cli-starter.git"
@@ -48,6 +54,7 @@
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-markdown": "^1.0.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.1",
