@@ -10,7 +10,8 @@ TypeScript CLI project template.
 1. [.editorconfig](#4-editorconfig)
 1. [ESLint](#5-eslint)
 1. [Prettier](#6-prettier)
-1. [Must-have libraries](#7-must-have-libraries)
+1. [Jest](#7-jest)
+1. [Must-have libraries](#8-must-have-libraries)
 
 ## 1. Create an empty project
 
@@ -223,9 +224,40 @@ Add a file `.prettierignore` to ignore several file types.
 
 For more details see <https://prettier.io/docs/en/integrating-with-linters.html>.
 
-## 7. Must-have libraries
+## 7. Jest
 
-### 7.1 Parse command line arguments
+Install:
+
+```bash
+npm install jest eslint-plugin-jest ts-jest @types/jest --save-dev
+```
+
+Add a `test` command in `pacage.json`:
+
+```json
+"test": "jest --config jest.config.json --no-cache",
+```
+
+Also add a `prepublish` command in `package.json`:
+
+```json
+"prepublish": "npm run build && npm run lint && npm run prettier && npm run test"
+```
+
+`jest.config.json`:
+
+```json
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "roots": ["<rootDir>/tests"],
+  "testPathIgnorePatterns": ["<rootDir>/node_modules/"]
+}
+```
+
+## 8. Must-have libraries
+
+### 8.1 Parse command line arguments
 
 Install `yargs`:
 
@@ -251,7 +283,7 @@ const argv = yargs.options({
 console.info(argv);
 ```
 
-### 7.2 Colorize text on terminal
+### 8.2 Colorize text on terminal
 
 Install`chalk` :
 
@@ -267,7 +299,7 @@ import chalk from 'chalk';
 console.info(chalk.green('Green text'));
 ```
 
-### 7.3 ASCII banner
+### 8.3 ASCII banner
 
 Install `figlet`:
 
@@ -284,7 +316,7 @@ import figlet from 'figlet';
 console.log(chalk.green(figlet.textSync('ts-cli-starter')));
 ```
 
-## 8. Publish to npm
+## 9. Publish to npm
 
 First, use a `.npmignore` file to keep stuff out of your package. See [Keeping files out of your package](https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package) to learn more about `.npmignore`.
 
