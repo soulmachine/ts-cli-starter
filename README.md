@@ -255,6 +255,17 @@ Also add a `prepublish` command in `package.json`:
 }
 ```
 
+Create a new file `tests/hello.spec.ts` and put a dummy unit test in it:
+
+```typescript
+test('A dummy unit test', (): void => {
+  const n = 2;
+  expect(n).toBe(2);
+});
+```
+
+Now run `npm run test` and you'll see Jest is doing its job!
+
 ## 8. Must-have libraries
 
 ### 8.1 Parse command line arguments
