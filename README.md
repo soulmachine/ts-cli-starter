@@ -238,10 +238,10 @@ Add a `test` command in `pacage.json`:
 "test": "jest --config jest.config.json --no-cache",
 ```
 
-Also add a `prepublish` command in `package.json`:
+Also add a `prepare` command in `package.json`:
 
 ```json
-"prepublish": "npm run build && npm run lint && npm run prettier && npm run test"
+"prepare": "npm run build && npm run lint && npm run prettier && npm run test"
 ```
 
 `jest.config.json`:
@@ -272,8 +272,8 @@ Add a Git hook. Install `husky` using `npm install husky --save-dev` and add the
 {
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prepublish",
-      "pre-push": "npm run prepublish"
+      "pre-commit": "npm run prepare",
+      "pre-push": "npm run prepare"
     }
   }
 }

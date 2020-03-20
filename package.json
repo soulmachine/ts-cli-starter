@@ -15,12 +15,12 @@
     "lint": "eslint . --ext '.js,.jsx,.ts,.tsx,.md'",
     "prettier": "prettier -c --write '**/*'",
     "test": "jest --config jest.config.json --no-cache",
-    "prepublish": "npm run build && npm run lint && npm run prettier && npm run test"
+    "prepare": "npm run build && npm run lint && npm run prettier && npm run test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prepublish",
-      "pre-push": "npm run prepublish"
+      "pre-commit": "npm run prepare",
+      "pre-push": "npm run prepare"
     }
   },
   "repository": {
