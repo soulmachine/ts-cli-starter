@@ -272,8 +272,7 @@ Add a Git hook. Install `husky` using `npm install husky --save-dev` and add the
 {
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prepare",
-      "pre-push": "npm run prepare"
+      "pre-commit": "npm run prepare"
     }
   }
 }
