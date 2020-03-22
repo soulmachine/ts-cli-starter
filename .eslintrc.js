@@ -12,7 +12,7 @@ const eslintrc = {
     es6: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['markdown', 'jest', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier', 'jest', 'markdown'],
   // https://github.com/typescript-eslint/typescript-eslint/issues/46#issuecomment-470486034
   overrides: [
     {
