@@ -9,6 +9,7 @@ const eslintrc = {
     'plugin:import/typescript',
     'plugin:jest/recommended',
     'plugin:prettier/recommended',
+    'plugin:markdown/recommended',
   ],
   env: {
     node: true,
