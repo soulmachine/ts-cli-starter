@@ -1,14 +1,14 @@
 const eslintrc = {
   extends: [
-    'eslint:recommended',
-    'airbnb-base',
-    'plugin:@typescript-eslint/eslint-recommended',
+    'airbnb',
+    'plugin:prettier/recommended',
+    'plugin:jest/recommended',
+    // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
     'plugin:@typescript-eslint/recommended',
+    // https://github.com/benmosher/eslint-plugin-import
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
-    'plugin:jest/recommended',
-    'plugin:prettier/recommended',
     'plugin:markdown/recommended',
   ],
   env: {
