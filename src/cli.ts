@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// eslint-disable-next-line import/no-unresolved
 import chalk from 'chalk';
 import figlet from 'figlet';
 import yargs from 'yargs';

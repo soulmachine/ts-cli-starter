@@ -349,6 +349,7 @@ Last, run `npm publish` to publish your package to npm.
 
 ## References
 
+- [Linting your TypeScript Codebase](https://typescript-eslint.io/docs/linting/)
 - [bitjson/typescript-starter](https://github.com/bitjson/typescript-starter)
 - [Recommended Configuration - eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier#recommended-configuration)
 - [ant-design](https://github.com/ant-design/ant-design)
