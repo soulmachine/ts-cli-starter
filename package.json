@@ -1,7 +1,7 @@
 {
   "name": "nft-cli",
   "version": "0.0.0",
-  "description": "TypeScript CLI project template.",
+  "description": "NFT tools for using nft.storage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
