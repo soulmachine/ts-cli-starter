@@ -4,31 +4,10 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import yargs from 'yargs';
 
-import { createReadStream } from 'fs';
-import { CarReader } from '@ipld/car';
-// import ipfs_car from 'ipfs-car/dist/esm/cli';
-// import type {packToFs as ptf} from 'ipfs-car/pack/fs';
-// // @ts-expect-error can't find types
 import { packToFs } from 'ipfs-car/pack/fs';
-import { NFTStorage } from 'nft.storage';
-import * as fs from 'fs/promises';
+import { storeCarFile } from './upload';
 
 const API_TOKEN = process.env.NFT_STORAGE_API_TOKEN;
-
-async function storeCarFile(filename: string, token = API_TOKEN) {
-  const stats = await fs.stat(filename);
-  const car = await CarReader.fromIterable(createReadStream(filename));
-  let total = 0;
-  function onStoredChunk(i: number) {
-    total += i;
-    console.log(`${((total / stats.size) * 100).toFixed(1)}%`);
-  }
-  if (!token) {
-    throw new Error('NFT_STORAGE_API_TOKEN is missing');
-  }
-  const client = new NFTStorage({ token });
-  return client.storeCar(car, { onStoredChunk });
-}
 
 function makeLink(s: string): string {
   return `https://${s}.ipfs.dweb.link`;
@@ -50,9 +29,12 @@ yargs
       });
     },
     async (argv) => {
-      console.log('yay', argv['api-key']);
-      return;
-      const CID = await storeCarFile(argv.$0);
+      let apiKey = (argv['api-key'] ?? API_TOKEN) as string | undefined;
+      if (!apiKey) {
+        throw new Error("API key missing. Need `--api-key` or NFT_STORAGE_API_TOKEN env");
+      }
+
+      const CID = await storeCarFile(argv.car as string, apiKey);
       const link = makeLink(CID);
       console.log(CID);
       console.log(link);
