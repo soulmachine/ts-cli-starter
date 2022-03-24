@@ -1,6 +1,6 @@
 const eslintrc = {
   extends: [
-    'airbnb',
+    // 'airbnb',
     'plugin:prettier/recommended',
     'plugin:jest/recommended',
     // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin

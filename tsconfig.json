@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es5",
     "module": "commonjs",
     "declaration": true,
     "outDir": "dist",
@@ -17,9 +17,10 @@
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
     "noImplicitAny": true,
+    "skipLibCheck": true,
 
     "lib": ["esnext"]
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "test/**/*.ts"]
 }

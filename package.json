@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
-  "bin": "dist/cli.js",
+  "bin": {
+    "nft": "dist/cli.js"
+  },
   "files": [
     "dist/"
   ],
@@ -15,7 +17,8 @@
     "lint": "eslint . --ext '.js,.jsx,.ts,.tsx,.md'",
     "prettier": "prettier -c --write '**/*'",
     "test": "jest --config jest.config.json --no-cache",
-    "prepare": "npm run build && npm run lint && npm run prettier && npm run test"
+    "prepare": "npm run build && npm run prettier && npm run lint && npm run test",
+    "nft": "node dist/cli.js"
   },
   "husky": {
     "hooks": {
@@ -51,6 +54,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-markdown": "^2.2.1",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
@@ -60,8 +64,11 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "chalk": "^5.0.0",
+    "@ipld/car": "^4.0.0",
+    "chalk": "^4.0.0",
     "figlet": "^1.5.2",
+    "ipfs-car": "^0.6.2",
+    "nft.storage": "^6.0.2",
     "yargs": "^17.3.0"
   }
 }
