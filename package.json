@@ -1,6 +1,6 @@
 {
-  "name": "ts-cli-starter",
-  "version": "1.0.3",
+  "name": "nft-cli",
+  "version": "0.0.0",
   "description": "TypeScript CLI project template.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
