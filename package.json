@@ -36,12 +36,12 @@
   "engines": {
     "node": ">=10"
   },
-  "author": "soulmachine",
+  "author": "Willem Wyndham",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/soulmachine/ts-cli-starter/issues"
+    "url": "https://github.com/TENK-DAO/nft-cli/issues"
   },
-  "homepage": "https://github.com/soulmachine/ts-cli-starter",
+  "homepage": "https://github.com/TENK-DAO/nft-cli",
   "devDependencies": {
     "@types/figlet": "^1.5.4",
     "@types/jest": "^27.0.3",
