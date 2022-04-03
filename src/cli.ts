@@ -12,14 +12,29 @@ const API_TOKEN = process.env.NFT_STORAGE_API_TOKEN;
 function makeLink(s: string): string {
   return `https://${s}.ipfs.dweb.link`;
 }
-console.log(chalk.blue(figlet.textSync('NFT CLI')));
 
 // eslint-disable-next-line no-var
 yargs
   .scriptName('nft')
   .command(
+    'pack <directory>',
+    'pack a directory into a .car file',
+    (y) => {
+      y.option('output', { type: 'string', default: 'index.car' });
+    },
+    async (argv) => {
+      const input = argv.directory as string;
+      const output = argv.output as string;
+      const { root, filename } = await pack({ input, output });
+      // tslint:disable-next-line: no-console
+      console.log(`root CID: ${root.toString()}`);
+      // tslint:disable-next-line: no-console
+      console.log(`  output: ${filename}`);
+    },
+  )
+  .command(
     'upload <car>',
-    'upload .car file to nft.storage',
+    'upload .car file to nft.storage.\nExpects env variable `NFT_STORAGE_API_TOKEN` or --api-key',
     (y) => {
       y.positional('car', {
         describe: 'path to car file to be uploaded',
@@ -31,7 +46,7 @@ yargs
     async (argv) => {
       let apiKey = (argv['api-key'] ?? API_TOKEN) as string | undefined;
       if (!apiKey) {
-        throw new Error("API key missing. Need `--api-key` or NFT_STORAGE_API_TOKEN env");
+        throw new Error('API key missing. Need `--api-key` or NFT_STORAGE_API_TOKEN env');
       }
 
       const CID = await storeCarFile(argv.car as string, apiKey);
@@ -40,25 +55,15 @@ yargs
       console.log(link);
     },
   )
-  .command(
-    'pack <directory>',
-    'pack a directory into a .car file',
-    (y) => {
-      y.option('output', { type: 'string', default: 'index.car' });
-    },
-    async (argv) => {
-      const input = argv.directory as string;
-      const output = argv.output as string;
-      const { root, filename } = await pack({input, output});
-      // tslint:disable-next-line: no-console
-      console.log(`root CID: ${root.toString()}`);
-      // tslint:disable-next-line: no-console
-      console.log(`  output: ${filename}`);
-    },
-  ).argv;
+  .fail(function (_msg, _err, yargs) {
+    // if (err) throw err // preserve stack
+    console.log(chalk.blue(figlet.textSync('NFT CLI')));
 
+    console.error(yargs.help());
+    process.exit(1);
+  }).argv;
 
-async function pack({output, input}: {output: string, input: string}) {
+async function pack({ output, input }: { output: string; input: string }) {
   return packToFs({
     input,
     output,
