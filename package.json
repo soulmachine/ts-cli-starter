@@ -1,7 +1,7 @@
 {
   "name": "nft-cli",
-  "version": "0.0.0",
-  "description": "TypeScript CLI project template.",
+  "version": "0.0.2",
+  "description": "NFT tools for using nft.storage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
@@ -12,8 +12,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "start": "node ./dist/index.js",
+    "build": "tsc",
     "lint": "eslint . --ext '.js,.jsx,.ts,.tsx,.md'",
     "prettier": "prettier -c --write '**/*'",
     "test": "jest --config jest.config.json --no-cache",

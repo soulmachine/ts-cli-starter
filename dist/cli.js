@@ -49,37 +49,9 @@ var API_TOKEN = process.env.NFT_STORAGE_API_TOKEN;
 function makeLink(s) {
     return "https://".concat(s, ".ipfs.dweb.link");
 }
-console.log(chalk_1.default.blue(figlet_1.default.textSync('NFT CLI')));
 // eslint-disable-next-line no-var
 yargs_1.default
     .scriptName('nft')
-    .command('upload <car>', 'upload .car file to nft.storage', function (y) {
-    y.positional('car', {
-        describe: 'path to car file to be uploaded',
-        default: 'index.car',
-    }).option('api-key', {
-        type: 'string',
-    });
-}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
-    var apiKey, CID, link;
-    var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                apiKey = ((_a = argv['api-key']) !== null && _a !== void 0 ? _a : API_TOKEN);
-                if (!apiKey) {
-                    throw new Error("API key missing. Need `--api-key` or NFT_STORAGE_API_TOKEN env");
-                }
-                return [4 /*yield*/, (0, upload_1.storeCarFile)(argv.car, apiKey)];
-            case 1:
-                CID = _b.sent();
-                link = makeLink(CID);
-                console.log(CID);
-                console.log(link);
-                return [2 /*return*/];
-        }
-    });
-}); })
     .command('pack <directory>', 'pack a directory into a .car file', function (y) {
     y.option('output', { type: 'string', default: 'index.car' });
 }, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
@@ -99,7 +71,40 @@ yargs_1.default
                 return [2 /*return*/];
         }
     });
-}); }).argv;
+}); })
+    .command('upload <car>', 'upload .car file to nft.storage.\nExpects env variable `NFT_STORAGE_API_TOKEN` or --api-key', function (y) {
+    y.positional('car', {
+        describe: 'path to car file to be uploaded',
+        default: 'index.car',
+    }).option('api-key', {
+        type: 'string',
+    });
+}, function (argv) { return __awaiter(void 0, void 0, void 0, function () {
+    var apiKey, CID, link;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                apiKey = ((_a = argv['api-key']) !== null && _a !== void 0 ? _a : API_TOKEN);
+                if (!apiKey) {
+                    throw new Error('API key missing. Need `--api-key` or NFT_STORAGE_API_TOKEN env');
+                }
+                return [4 /*yield*/, (0, upload_1.storeCarFile)(argv.car, apiKey)];
+            case 1:
+                CID = _b.sent();
+                link = makeLink(CID);
+                console.log(CID);
+                console.log(link);
+                return [2 /*return*/];
+        }
+    });
+}); })
+    .fail(function (_msg, _err, yargs) {
+    // if (err) throw err // preserve stack
+    console.log(chalk_1.default.blue(figlet_1.default.textSync('NFT CLI')));
+    console.error(yargs.help());
+    process.exit(1);
+}).argv;
 function pack(_a) {
     var output = _a.output, input = _a.input;
     return __awaiter(this, void 0, void 0, function () {
