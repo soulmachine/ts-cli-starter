@@ -1,6 +1,6 @@
 {
   "name": "nft-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NFT tools for using nft.storage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
